@@ -28,7 +28,7 @@ public class HerdParameters{
 	//funcje sa rozne wiec to chyba powinno ulegac zmianie
 	//krille laduja jeden an drugin i to nie ma sensu, trzeba poprawić bo nie ruszy
     public float getRelatedFitnessValue(){
-        return worstFitnessValue - bestFitnessValue + 0.05f;
+        return worstFitnessValue - bestFitnessValue + 0.02f;
     }
 
     public Position getBestFitnessKrill() {

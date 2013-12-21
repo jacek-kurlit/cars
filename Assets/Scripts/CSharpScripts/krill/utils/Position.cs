@@ -87,4 +87,12 @@ public class Position{
 	public Vector3 toVector3(float yCar){
 		return new Vector3(x,yCar,z);
 	}
+
+	public bool isGrater(Position other){
+		float x = Mathf.Abs(other.x/2.0f);
+		float z = Mathf.Abs(other.z/2.0f);
+		if(x > Mathf.Abs(this.x) || z > Mathf.Abs(this.z))
+			return true;
+		return false;
+	}
 }

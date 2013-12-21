@@ -7,7 +7,10 @@ public class BetaCalculator {
     public Position calculateBeta(Krill krill, Food food, HerdParameters parameters) {
         Position betaFood = calculateBetaFood(food,krill);
         Position betaBest = calculateBetaBest(krill,parameters);
-
+		//Debug.Log("Food " + betaFood + " best " + betaBest);
+		if(betaFood.isGrater(betaBest)){
+			Debug.Log("ajuta me! beta food " + betaFood + " beta best " + betaBest);
+		}
         return betaFood + betaBest;
     }
 
@@ -18,6 +21,7 @@ public class BetaCalculator {
     private Position calculateBetaBest(Krill krill, HerdParameters parameters) {
         Position bestRelatedPosition = tendencyCalculator.calculateRelatedPosition(krill.getBestPosition(),krill.getPosition());
         float bestFitness = tendencyCalculator.calculateRelatedFitness(krill.getFitnessValue(),krill.getBestPositionFitness(),parameters);		
+		//Debug.Log("best fitness "  + bestFitness);
 		bestRelatedPosition = bestRelatedPosition * bestFitness;        
         return bestRelatedPosition;
     }

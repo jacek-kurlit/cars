@@ -6,7 +6,8 @@ public class TendencyCalculator {
 
     public Position calculateRelatedPosition(Position neighbour, Position krill) {
         Position related = neighbour - krill; 
-        return related/(neighbour.distanceFrom(krill) + e);
+		related = related/(neighbour.distanceFrom(krill) + e); 	
+        return related;
     }
 
     public float calculateRelatedFitness(float krillFitness,float neighbourFitness, HerdParameters parameters) {

@@ -6,6 +6,8 @@ public class Food {
 	private const float distanceEffectivnes = 10.0f;
     private Position[] positions;
 	private int currentIndex = 1;
+	private const float a = 7.0f;
+	private const float b = 30.0f;
 
 	private TendencyCalculator tendencyCalculator = new TendencyCalculator();
 	private HerdParameters herdParameters;
@@ -31,8 +33,11 @@ public class Food {
 
 		Position closeRelatedPosition = tendencyCalculator.calculateRelatedPosition(closeFood,krill.getPosition());
 		Position farRelatedPosition = tendencyCalculator.calculateRelatedPosition(farFood,krill.getPosition());
-
-		Position betaFood = closeRelatedPosition * closeFitnes * coefficient + farRelatedPosition * closeFitnes * distantCoefficient;
+		closeRelatedPosition = closeRelatedPosition * closeFitnes * coefficient;
+		farRelatedPosition = farRelatedPosition * closeFitnes * distantCoefficient;
+		//Debug.Log("food fitenss " + closeFitnes);
+		//Debug.Log("close " + closeRelatedPosition + " far " + farRelatedPosition);
+		Position betaFood = closeRelatedPosition  + farRelatedPosition;
 
 		return betaFood;
 	}
@@ -45,11 +50,16 @@ public class Food {
 	private float coefficientForKrill(Krill krill){
 		float distant = positions[currentIndex].distanceFrom(krill.getPosition());
 
-		if(distant > 10.0f)
+		return 0.8f;
+		if(distant > b){
 			return 1.0f;
+		}
+		else if(distant >= a && distant <= b){
+			return 1.2f;//(distant - a)/(b-a);
+		}else{
+			return 0.1f;
+		}
 
-		return distant/10.0f;
-		
 	}
 
 	private Position farFoodPosition(){
@@ -59,6 +69,15 @@ public class Food {
 		return positions[1];
 	}	
 
+
+	public void switchToAnotherFood(Position bestKrill,List<Krill> herd){
+		float distant = positions[currentIndex].distanceFrom(bestKrill);
+		if(distant < a){
+			changeFoodIndex();
+			resetHerdBest(herd);
+		}
+	}
+
 	private void changeFoodIndex(){
 		if(currentIndex + 1 < positions.Length){
 			currentIndex++;
@@ -67,13 +86,9 @@ public class Food {
 		}
 	}
 
-	public void switchToAnotherFood(Position bestKrill){
-		float distant = positions[currentIndex].distanceFrom(bestKrill);
-		//Debug.Log("Distant is " + distant);
-		if(distant < 4.5f){
-			//herdParameters.resetFitness();
-			changeFoodIndex();
-			Debug.Log("Switched to another food position[ " + currentIndex + "] " + positions[currentIndex]);
+	private void resetHerdBest(List<Krill> herd){
+		foreach(Krill krill in herd){
+			krill.resetBestPosition();
 		}
 	}
 }

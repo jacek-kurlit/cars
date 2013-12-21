@@ -8,9 +8,9 @@ public class Krill {
     private Position foragingMotion = new Position();
     private Position diffusionMotion = new Position();
     private Position bestPosition = new Position();
-    private float bestPositionFitness = 10000.0f;
+    private float bestPositionFitness = 50.0f;
 	private Transform krillVizualPosition;
-	
+
     public Krill(Position position, Transform kvp) {
         this.position = position;
 		krillVizualPosition = kvp;
@@ -18,7 +18,7 @@ public class Krill {
 
     public void updatePosition(Vector3 carPosition){
         Position newPosition  = motionInduced + foragingMotion + diffusionMotion;  
-		Debug.Log("Motion " + motionInduced + " Foraging " + foragingMotion);
+		//Debug.Log("Motion " + motionInduced + " Foraging " + foragingMotion);
         position = position + newPosition; 
 			
 		clampToCar(carPosition);
@@ -49,6 +49,7 @@ public class Krill {
 
     public void setFitnessValue(float fitnessValue) {
         if(fitnessValue < bestPositionFitness){
+			//Debug.Log("New best fitness for fitness " + fitnessValue + " and position " + position);
             bestPositionFitness = fitnessValue;
             bestPosition = position.getClone();
         }
@@ -82,5 +83,10 @@ public class Krill {
     public void setDiffusionMotion(Position diffusionMotion) {
         this.diffusionMotion = diffusionMotion;
     }
-		
+
+	public void resetBestPosition(){
+		bestPositionFitness = fitnessValue;
+		bestPosition = position.getClone();
+		//Debug.Log("new best fitness " + fitnessValue + " and best position " + bestPosition);
+	}
 }

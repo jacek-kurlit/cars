@@ -1,20 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EnemyPlayer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CSharpScripts\krill\calculators\BetaCalculator.cs">
     <Files>
-      <File FileName="Assets\EnemyPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\EnemyPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="1" Column="1" />
-      <File FileName="Assets\HumanPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Krill.cs" Line="21" Column="70" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\FitnessCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\ForagingCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\MotionCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\TendencyCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Randomizer.cs" Line="1" Column="1" />
+      <File FileName="Assets\EnemyPlayer.cs" Line="20" Column="29" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\BetaCalculator.cs" Line="11" Column="32" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="38" Column="5" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Krill.cs" Line="90" Column="5" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="28" Column="33" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" Line="36" Column="6" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\ForagingCalculator.cs" Line="10" Column="90" />
+      <File FileName="Assets\Scripts\CSharpScripts\car\CarController.cs" Line="104" Column="7" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\TendencyCalculator.cs" Line="9" Column="58" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" Line="93" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

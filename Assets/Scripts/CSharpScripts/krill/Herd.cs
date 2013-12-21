@@ -60,7 +60,7 @@ private DiffusionCalculator diffusionCalculator = new DiffusionCalculator();
       foreach (Krill krill in herd){
           krill.updatePosition(carTransform.position);
       } 
-		food.switchToAnotherFood(algorithmParameters.getBestFitnessKrill());
+		food.switchToAnotherFood(algorithmParameters.getBestFitnessKrill(),herd);
 		//Debug.Log("Stop update");
     }
 }
