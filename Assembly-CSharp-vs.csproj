@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{12A154EB-ABB5-3A8C-8B35-36EA24F87E7E}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_1;UNITY_4_3;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\EnemyAI.cs" />
+     <Compile Include="Assets\EnemyPlayer.cs" />
+     <Compile Include="Assets\HumanPlayer.cs" />
+     <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\car\CarCamera.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\car\CarController.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\car\Wheel.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\car\Wing.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\BirdsBehaviour.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\BlobShadowController.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\CombineChildren.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\DisableObjects.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\EffectController.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\Generate2DReflection.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\MirrorReflection.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\Skidmarks.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\SoundController.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\effects\ToggleObjectTrigger.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\Food.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\Herd.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\Krill.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\AlphaCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\BetaCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\DiffusionCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\FitnessCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\ForagingCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\MotionCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\TendencyCalculator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\genetic\Crossover.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\genetic\Mutation.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\NeighbourDeterminator.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\Randomizer.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\physics\AerodynamicResistance.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\physics\AntiRollBar.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\physics\Drivetrain.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\physics\TractionHelper.cs" />
+     <None Include="Assets\Pro Standard Assets\Glass Refraction\Glass-Stained-BumpDistort.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample.shader" />
+     <None Include="Assets\Shaders\PolyTerrain\FirstPassLightmap.shader" />
+     <None Include="Assets\Shaders\LightMappedDiffusetDetail.shader" />
+     <None Include="Assets\Shaders\LightsEmmissive.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\ColorCorrectionEffect.shader" />
+     <None Include="Assets\Shaders\ShadowProjection.shader" />
+     <None Include="Assets\~AlternatePhysicsModel\Source Assets\Cars\Car.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\MotionBlur.shader" />
+     <None Include="Assets\Shaders\GlassReflect.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\MinMaxReduction.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\ColorCorrectionEffect_26.shader" />
+     <None Include="Assets\~AlternatePhysicsModel\Source Assets\Skidmarks\Skidmarks.shader" />
+     <None Include="Assets\Pro Standard Assets\Glass Refraction\Glass-Stained-BumpSpecDistort.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample_26.shader" />
+     <None Include="Assets\Shaders\Normal-BumpSpec_EnvLightmapped.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\SSAOShader.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\Shaders\AlphaTest-Diffuse-GEqual.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Luminance.shader" />
+     <None Include="Assets\Shaders\Skidmarks.shader" />
+     <None Include="Assets\Shaders\Glassreflect2D.shader" />
+     <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water.shader" />
+     <None Include="Assets\Shaders\GlassBuilding.shader" />
+     <None Include="Assets\Shaders\PolyTerrain\polysplatting.cginc" />
+     <None Include="Assets\Pro Standard Assets\Image Based\GrayscaleEffect.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\SepiaToneEffect.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\TwirlEffect.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\VortexEffect.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Adaptation.shader" />
+     <None Include="Assets\Shaders\Alpha-VertexLitGlow02.shader" />
+     <None Include="Assets\Pro Standard Assets\Image Based\EdgeDetectX.shader" />
+     <None Include="Assets\Shaders\MirrorReflectionLit.shader" />
+     <None Include="Assets\Textures\VFX\ShadowProjection.shader" />
+     <None Include="Assets\Shaders\TransparentLightMappedVertexLiZWrite.shader" />
+     <None Include="Assets\Shaders\Alpha-Diffuse-ZWrite.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{A3433896-3349-9FAC-4CF9-3E547279D76D}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
