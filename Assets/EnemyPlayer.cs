@@ -10,9 +10,9 @@ public class EnemyPlayer : Player {
 	
 	private int inverse = 1;
 	
-	private bool back = false;
-	private float backTime = 4.0f;
-	private float currentBackTime = 0.0f;
+	private bool newCollsion = true;
+	private float stopTime = 3.0f;
+	private float currentStopTime = 0.0f;
 	private float angle = 0f;
 	
 	public EnemyPlayer(GameObject car){
@@ -20,8 +20,7 @@ public class EnemyPlayer : Player {
 		this.carTransform = car.transform;			
 		drivetrain = car.GetComponentInChildren<Drivetrain>();	
 		Transform[] krillVis =  GameObject.FindGameObjectWithTag("KrillVisual").GetComponentsInChildren<Transform>(); 
-		herd = new Herd();	
-		herd.init(carTransform,krillVis,initialTrace);
+		herd = new Herd(carTransform,krillVis,initialTrace);	
 	}
 		
 	public int getVerticalInput(){		
@@ -34,28 +33,23 @@ public class EnemyPlayer : Player {
 	}
 	
 	public void collision(Collision other){
-		if(!other.gameObject.tag.Equals("Player") && currentBackTime == 0.0f){	
-			Vector3 heading = initialTrace[index].position - carTransform.position;
-			float angle = Vector3.Angle(heading,carTransform.forward);
-			if(angle > 30.0f){
-				back = true;
-			}
-		}
+		
 	}
 
 	private int angleDirection(Vector3 bestKrillPosition){
 		//Debug.Log("Heading to " + bestKrillPosition);
+		//wywalic ten if w srodku
 		Vector3 heading = bestKrillPosition - carTransform.position;
 		Vector3 perp = Vector3.Cross(carTransform.forward, heading);
 		float dir = Vector3.Dot(perp, carTransform.up);
 		float angle = Vector3.Angle(heading,carTransform.forward);
 		if (dir > 0f) {
-			if(angle > 5.0f)
-				return 1 * inverse;
+			if(angle > 4.0f)
+				return 1;
 		}
 		else{
-			if(angle > 5.0f)
-				return -1 * inverse;				
+			if(angle > 4.0f)
+				return -1;				
 		}
 		return 0;		
 	}

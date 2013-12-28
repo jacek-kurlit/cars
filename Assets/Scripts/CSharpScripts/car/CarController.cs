@@ -101,7 +101,7 @@ public class CarController : MonoBehaviour {
 		drivetrain = GetComponent<Drivetrain>();
 	}
 	
-	void Update () 
+	void FixedUpdate () 
 	{		
 		//Steering
 		adjustSteering();

@@ -16,6 +16,6 @@ public class Crossover {
 
     private void crossKrill(Krill toCross, List<Krill> herd) {
         int ind =   Random.Range(0,herd.Count);
-        toCross.crossover(herd[ind]);
+       // toCross.crossover(herd[ind]);
     }
 }

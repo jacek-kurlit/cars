@@ -20,6 +20,6 @@ public class Mutation {
         Krill first = herd[Random.Range(0,range)];
         int secondIndex = Random.Range(range,herd.Count);
         Krill second = herd[secondIndex];
-        krill.mutate(first,second,parameters.getBestFitnessKrill());
+//        krill.mutate(first,second,parameters.getBestFitnessKrill());
     }
 }

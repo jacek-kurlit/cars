@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +78,12 @@
      <Compile Include="Assets\Scripts\CSharpScripts\krill\calculators\TendencyCalculator.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\krill\genetic\Crossover.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\krill\genetic\Mutation.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\CircleKrillSetter.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\KrillSetter.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\NeighbourDeterminator.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\Randomizer.cs" />
+     <Compile Include="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\physics\AerodynamicResistance.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\physics\AntiRollBar.cs" />
      <Compile Include="Assets\Scripts\CSharpScripts\physics\Drivetrain.cs" />

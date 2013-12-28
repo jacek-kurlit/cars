@@ -6,29 +6,14 @@ public class HerdParameters{
     public float Vf = 0.02f;
     public float inertiaWeight = 0.5f; // from range [0,1]
     public float inertiaForagingWeight = 0.9f; // from range [0,1]
-    public int herdSize = 4;
-
-    private int maxIteration = 10;
-    private int currentIteration = 0;
+    public int herdSize = 5;
 
     private Position bestFitnessPosition;
     private float bestFitnessValue = 1000000.0f;
     private float worstFitnessValue = -100000.0f;
 
-
-    public bool nextIteration(){
-        if(currentIteration < maxIteration){
-           currentIteration++;
-            return true;
-        }
-        return false;
-    }
-	
-	//tutaj moga byc jajca bo to sie dynamiznie zmienia
-	//funcje sa rozne wiec to chyba powinno ulegac zmianie
-	//krille laduja jeden an drugin i to nie ma sensu, trzeba poprawić bo nie ruszy
     public float getRelatedFitnessValue(){
-        return worstFitnessValue - bestFitnessValue + 0.02f;
+        return worstFitnessValue - bestFitnessValue;
     }
 
     public Position getBestFitnessKrill() {
@@ -36,8 +21,6 @@ public class HerdParameters{
     }
 
     public float getIterationRatio(){
-        //return (float)currentIteration / (float)maxIteration;
-		//mozna by pomyslec z tym bo kicha jakas tutaj
 		return 0.0f;
     }
 

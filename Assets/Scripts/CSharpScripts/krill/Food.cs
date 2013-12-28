@@ -3,65 +3,80 @@ using System.Collections.Generic;
 
 
 public class Food {	
-	private const float distanceEffectivnes = 10.0f;
     private Position[] positions;
+	private Position currentFoodPosition;
 	private int currentIndex = 1;
-	private const float a = 7.0f;
-	private const float b = 30.0f;
+
+	private float foodCarOffset = 10.0f;
+	private float maxFoodCoefficient = 10.0f;
+
+	private const float closeDistance = 10.0f;
+	private const float farDistance = 50.0f;
 
 	private TendencyCalculator tendencyCalculator = new TendencyCalculator();
 	private HerdParameters herdParameters;
 
+	private Transform visualFoodPosition;
+
 	public Food(Transform[] initialTrace, HerdParameters herdParameters){
 		positions = new Position[initialTrace.Length];		
+		visualFoodPosition = GameObject.FindGameObjectWithTag("Food").transform;
 		this.herdParameters = herdParameters;
+		currentFoodPosition = new Position(visualFoodPosition.position);
 		for(int i = 0; i < initialTrace.Length; i++){
 			positions[i] = new Position(initialTrace[i].position);
 		}
 	}	   
 
-	public Position calculateFoodBeta(Krill krill){
-		float coefficient  = coefficientForKrill(krill);
-		float distantCoefficient = 1.0f - coefficient;
-		float fitnessValue = 1.0f;
+	public void updateFoodPosition(Vector3 carPosVecotr){
+		Position carPosition = new Position(carPosVecotr);
+		Position newPosition = calculateVirtualFoodPosition(carPosition);
 
-		Position closeFood = positions[currentIndex];
-		Position farFood = farFoodPosition();
-
-		//póki co fitness jest jeden ale powinnien byc rozny dla innej pozycji - nie oze to byc odleglosc bo zawsze wyjdzie 0
-		float closeFitnes = tendencyCalculator.calculateRelatedFitness(krill.getFitnessValue(),fitnessValue,herdParameters);
-
-		Position closeRelatedPosition = tendencyCalculator.calculateRelatedPosition(closeFood,krill.getPosition());
-		Position farRelatedPosition = tendencyCalculator.calculateRelatedPosition(farFood,krill.getPosition());
-		closeRelatedPosition = closeRelatedPosition * closeFitnes * coefficient;
-		farRelatedPosition = farRelatedPosition * closeFitnes * distantCoefficient;
-		//Debug.Log("food fitenss " + closeFitnes);
-		//Debug.Log("close " + closeRelatedPosition + " far " + farRelatedPosition);
-		Position betaFood = closeRelatedPosition  + farRelatedPosition;
-
-		return betaFood;
+		currentFoodPosition = newPosition;
+		clapToCar(carPosVecotr);
 	}
 
+	private Position calculateVirtualFoodPosition(Position carPosition){
+			float distance = carPosition.distanceFrom(positions[currentIndex]);
+			if(distance > farDistance){
+				Debug.Log("Position of " + positions[currentIndex]);
+				return positions[currentIndex];
+			}else{
+				return calculateRelatedFoodPosition(carPosition);
+			}
+	}
+
+	private Position calculateRelatedFoodPosition(Position carPosition){
+		Position relatedClosePosition =  tendencyCalculator.calculateRelatedPosition(positions[currentIndex],carPosition);
+		Position relatedFarPosition = tendencyCalculator.calculateRelatedPosition(farFoodPosition(),carPosition);
+		
+		float closeFoodCoefficient = calculateCloseFoodCoefficient(carPosition);
+		float farFoodCoefficient = maxFoodCoefficient - closeFoodCoefficient;
+		
+		Position newPosition = positions[currentIndex] +  relatedClosePosition * closeFoodCoefficient + relatedFarPosition * farFoodCoefficient;
+		
+		return newPosition;
+	}
+	private float calculateCloseFoodCoefficient(Position carPosition){
+		float distance = carPosition.distanceFrom(positions[currentIndex]);
+		if(distance >= closeDistance && distance <= farDistance){
+			return ((distance - closeDistance)/(farDistance - closeDistance)) * maxFoodCoefficient;
+		}
+		changeFoodIndex();
+		return 1.0f;
+	}
+
+	private void clapToCar(Vector3 carVector){
+		//currentFoodPosition.setX(Mathf.Clamp(currentFoodPosition.getX(),carVector.x - foodCarOffset,carVector.x + foodCarOffset));
+		//currentFoodPosition.setZ(Mathf.Clamp(currentFoodPosition.getZ(),carVector.z - foodCarOffset,carVector.z + foodCarOffset));
+		Vector3 newVisualFoodVector = new Vector3(currentFoodPosition.getX(),carVector.y + 1.0f,currentFoodPosition.getZ());
+		visualFoodPosition.position = newVisualFoodVector;
+	}
+	
 	public Position getCurrentFoodPosition(){
-		return positions[currentIndex];
+		return currentFoodPosition;
 	}
-	//byc moze ta wartosc jest za mala bo w podstawowym jest max 2 a tutaj max to 1
-	//tutaj mozna dodac przejcie do nastepnego food bo dystans by sie zgadzal
-	private float coefficientForKrill(Krill krill){
-		float distant = positions[currentIndex].distanceFrom(krill.getPosition());
-
-		return 0.8f;
-		if(distant > b){
-			return 1.0f;
-		}
-		else if(distant >= a && distant <= b){
-			return 1.2f;//(distant - a)/(b-a);
-		}else{
-			return 0.1f;
-		}
-
-	}
-
+	
 	private Position farFoodPosition(){
 		if(currentIndex + 1 < positions.Length){
 			return positions[currentIndex + 1];
@@ -70,11 +85,10 @@ public class Food {
 	}	
 
 
-	public void switchToAnotherFood(Position bestKrill,List<Krill> herd){
+	private void switchToAnotherFood(Position bestKrill){
 		float distant = positions[currentIndex].distanceFrom(bestKrill);
-		if(distant < a){
+		if(distant < closeDistance){
 			changeFoodIndex();
-			resetHerdBest(herd);
 		}
 	}
 
@@ -83,12 +97,6 @@ public class Food {
 			currentIndex++;
 		}else{
 			currentIndex = 1;
-		}
-	}
-
-	private void resetHerdBest(List<Krill> herd){
-		foreach(Krill krill in herd){
-			krill.resetBestPosition();
 		}
 	}
 }

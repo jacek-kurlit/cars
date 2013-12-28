@@ -8,14 +8,11 @@ public class BetaCalculator {
         Position betaFood = calculateBetaFood(food,krill);
         Position betaBest = calculateBetaBest(krill,parameters);
 		//Debug.Log("Food " + betaFood + " best " + betaBest);
-		if(betaFood.isGrater(betaBest)){
-			Debug.Log("ajuta me! beta food " + betaFood + " beta best " + betaBest);
-		}
         return betaFood + betaBest;
     }
 
     private Position calculateBetaFood(Food food, Krill krill ) {        
-        return food.calculateFoodBeta(krill);
+		return null;
     }
 
     private Position calculateBetaBest(Krill krill, HerdParameters parameters) {
