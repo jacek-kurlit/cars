@@ -4,9 +4,12 @@ using System.Collections.Generic;
 public class HerdParameters{
  	public float N_MAX = 0.01f;
     public float Vf = 0.02f;
-    public float inertiaWeight = 0.5f; // from range [0,1]
+    public float inertiaWeight = 1.0f; // from range [0,1]
     public float inertiaForagingWeight = 0.9f; // from range [0,1]
     public int herdSize = 5;
+
+	private int currentIteration = 0;
+	private int maxIteration = 5;
 
     private Position bestFitnessPosition;
     private float bestFitnessValue = 1000000.0f;
@@ -20,8 +23,16 @@ public class HerdParameters{
         return bestFitnessPosition;
     }
 
+	public bool nextIteration(){
+		if(currentIteration <= maxIteration){
+			currentIteration++;
+			return true;
+		}
+
+		return false;
+	}
     public float getIterationRatio(){
-		return 0.0f;
+		return (float)currentIteration/maxIteration;
     }
 
     public float randomizeDMAX(){
@@ -29,36 +40,20 @@ public class HerdParameters{
         return ran/1000.0f;
     }
 
-	//tak naprawde to jest najlepszy i najgorszy krill w tej iteracji a nie w ogóle.
-	//Trasa po ktorej trzeba jechac dynamicznie sie zmienia
-	//Inna opcja to reset statystyk ale tylko przy mzianie food na nastepny
-    public void updateBestWorstKrill(List<Krill> herd){
-		float currentBestFitness = 100000.0f;
-		float currentWorstFitness = -100000.0f;
-		Position currentBestPosition = new Position();
+    public void updateBestWorstKrill(Krill krill){
 
-		foreach(Krill krill in herd){
-			if(krill.getFitnessValue() < currentBestFitness){
-				currentBestFitness = krill.getFitnessValue();
-				currentBestPosition = krill.getPosition().getClone();
-			}
-			if(krill.getFitnessValue() > currentWorstFitness){
-				currentWorstFitness = krill.getFitnessValue();
-			}
+
+		if(krill.getFitnessValue() < bestFitnessValue){
+			bestFitnessValue = krill.getFitnessValue();
+			bestFitnessPosition = krill.getPosition().getClone();
 		}
-      
-    	bestFitnessValue = currentBestFitness;
-		bestFitnessPosition = currentBestPosition;
-   		worstFitnessValue = currentWorstFitness;      
+		if(krill.getFitnessValue() > worstFitnessValue){
+			worstFitnessValue = krill.getFitnessValue();
+		}		         
     }
 
     public float getBestFitnessValue() {
         return bestFitnessValue;
     }
-
-	public void resetFitness(){
-		bestFitnessValue = 1000000.0f;
-		worstFitnessValue = -100000.0f;
-		bestFitnessPosition = new Position();
-	}
+	
 }

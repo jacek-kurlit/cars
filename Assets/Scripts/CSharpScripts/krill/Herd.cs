@@ -9,35 +9,54 @@ public class Herd {
     private HerdParameters algorithmParameters;
 	private KrillSetter krillSetter;
 
+	private MotionCalculator motionCalculator = new MotionCalculator();
+	private DiffusionCalculator diffusionCalculator = new DiffusionCalculator();
+
 	private Transform carTransform;
+	private Transform[] krillViz;
 
 	public Herd(Transform carTransform,Transform[] krillViz, Transform[] initialTrace){
 		this.carTransform = carTransform;
-		
-		algorithmParameters = new HerdParameters();
-		krillSetter = new TriangleKrillSetter(algorithmParameters);
-		herd = krillSetter.initHerd(carTransform,krillViz);
+		this.krillViz = krillViz;	
+
+		krillSetter = new TriangleKrillSetter(new HerdParameters());
 		food = new Food(initialTrace,algorithmParameters);
 	}
 
     public Vector3 simulate(){ 	        
-		fitnessEvaluation();
-        updateKrillPositions();
-		return algorithmParameters.getBestFitnessKrill().toVector3(carTransform.position.y);
+		init();
+		while(algorithmParameters.nextIteration()){
+			fitnessEvaluation();
+			motionCalculations();
+        	updateKrillPositions();
+		}
+		return algorithmParameters.getBestFitnessKrill().toVector3();
     }
+
+	private void init(){
+		algorithmParameters = new HerdParameters();
+		herd = krillSetter.initHerd(carTransform,krillViz);
+	}
 
     private void fitnessEvaluation() {
        foreach(Krill krill in herd){
            Position krillPosition = krill.getPosition();
            float newFitness = fitnessCalculator.calculateFitness(krillPosition,food);
 
-           krill.setFitnessValue(newFitness);          
+           krill.setFitnessValue(newFitness);  
+		   algorithmParameters.updateBestWorstKrill(krill);
        }
     }
 
+	private void motionCalculations(){
+		motionCalculator.calculateMotion(herd,algorithmParameters);
+		diffusionCalculator.calculateDiffusionMotion(herd,algorithmParameters);
+	}
+
     private void updateKrillPositions(){
-		krillSetter.placeKrills(herd, carTransform);
-		food.updateFoodPosition(carTransform.position);
-		algorithmParameters.updateBestWorstKrill(herd);
+		foreach(Krill krill in herd){
+			krill.updatePosition(carTransform.position);
+		}
+		food.updateFoodPosition(carTransform.position);	
     }
 }

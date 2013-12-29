@@ -16,15 +16,13 @@ public class Krill {
 		krillVizualPosition = kvp;
     }
 
-    public void updatePosition(Vector3 carPosition,Position newPosition){
-		position = newPosition;
+    public void updatePosition(Vector3 carPosition){
+		position = position + motionInduced + diffusionMotion;
 			
 		clampToCar(carPosition);
     }
 
 	private void clampToCar(Vector3 carPosition){
-		//position.setX(Mathf.Clamp(position.getX(),carPosition.x - 5.0f,carPosition.x + 5.0f));
-		//position.setZ(Mathf.Clamp(position.getZ(),carPosition.z - 5.0f,carPosition.z + 5.0f));
 		krillVizualPosition.position = new Vector3(position.getX(),carPosition.y + 1.0f,position.getZ());
 	}
 
@@ -37,8 +35,10 @@ public class Krill {
     }
 
     public void setFitnessValue(float fitnessValue) {
-        bestPositionFitness = fitnessValue;
-        bestPosition = position.getClone();
+		if(fitnessValue < bestPositionFitness){
+			bestPositionFitness = fitnessValue;
+			bestPosition = position.getClone();
+		}        
         this.fitnessValue = fitnessValue;
     }
   
@@ -74,9 +74,4 @@ public class Krill {
 		this.position = position;
 	}
 
-	public void resetBestPosition(){
-		bestPositionFitness = fitnessValue;
-		bestPosition = position.getClone();
-		//Debug.Log("new best fitness " + fitnessValue + " and best position " + bestPosition);
-	}
 }

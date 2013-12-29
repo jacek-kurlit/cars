@@ -2,20 +2,26 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs">
     <Files>
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\CircleKrillSetter.cs" Line="30" Column="6" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="1" Column="1" />
-      <File FileName="Assets\EnemyPlayer.cs" Line="46" Column="18" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs" Line="60" Column="10" />
+      <File FileName="cars.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs" Line="60" Column="10" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\CircleKrillSetter.cs" Line="37" Column="4" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="22" Column="40" />
+      <File FileName="Assets\EnemyPlayer.cs" Line="80" Column="32" />
       <File FileName="Assets\Scripts\CSharpScripts\krill\utils\KrillSetter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Krill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\TriangleKrillSetter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="52" Column="3" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Krill.cs" Line="8" Column="51" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="41" Column="23" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CSharpScripts\car\CarController.cs" Line="223" Column="4" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" Line="50" Column="49" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\DiffusionCalculator.cs" Line="23" Column="6" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\FitnessCalculator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\MotionCalculator.cs" Line="19" Column="49" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\calculators\AlphaCalculator.cs" Line="32" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="E:\cars\Assets\Scripts\CSharpScripts\krill\Food.cs" line="33" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

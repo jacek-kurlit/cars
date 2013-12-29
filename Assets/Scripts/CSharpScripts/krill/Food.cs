@@ -37,9 +37,8 @@ public class Food {
 	}
 
 	private Position calculateVirtualFoodPosition(Position carPosition){
-			float distance = carPosition.distanceFrom(positions[currentIndex]);
-			if(distance > farDistance){
-				Debug.Log("Position of " + positions[currentIndex]);
+			float distance = carPosition.distanceFrom(currentFoodPosition);
+			if(distance > farDistance){				
 				return positions[currentIndex];
 			}else{
 				return calculateRelatedFoodPosition(carPosition);
@@ -54,7 +53,7 @@ public class Food {
 		float farFoodCoefficient = maxFoodCoefficient - closeFoodCoefficient;
 		
 		Position newPosition = positions[currentIndex] +  relatedClosePosition * closeFoodCoefficient + relatedFarPosition * farFoodCoefficient;
-		
+
 		return newPosition;
 	}
 	private float calculateCloseFoodCoefficient(Position carPosition){
@@ -67,9 +66,7 @@ public class Food {
 	}
 
 	private void clapToCar(Vector3 carVector){
-		//currentFoodPosition.setX(Mathf.Clamp(currentFoodPosition.getX(),carVector.x - foodCarOffset,carVector.x + foodCarOffset));
-		//currentFoodPosition.setZ(Mathf.Clamp(currentFoodPosition.getZ(),carVector.z - foodCarOffset,carVector.z + foodCarOffset));
-		Vector3 newVisualFoodVector = new Vector3(currentFoodPosition.getX(),carVector.y + 1.0f,currentFoodPosition.getZ());
+		Vector3 newVisualFoodVector = new Vector3(currentFoodPosition.getX(),currentFoodPosition.getY() + 1.0f,currentFoodPosition.getZ());
 		visualFoodPosition.position = newVisualFoodVector;
 	}
 	
@@ -95,6 +92,7 @@ public class Food {
 	private void changeFoodIndex(){
 		if(currentIndex + 1 < positions.Length){
 			currentIndex++;
+			Debug.Log("Next point " + currentIndex);
 		}else{
 			currentIndex = 1;
 		}

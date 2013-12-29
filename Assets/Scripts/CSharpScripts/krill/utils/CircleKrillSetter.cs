@@ -5,11 +5,13 @@ public class CircleKrillSetter : KrillSetter {
 	
 	private HerdParameters parameters;
 	
-	private float angle = 20.0f;
+	private float angle;
 	private float height = 5.0f;
+	private const float triangleAngleSize = 60.0f;
 	
 	public CircleKrillSetter(HerdParameters parameters){
 		this.parameters = parameters;
+		angle = triangleAngleSize/(parameters.herdSize - parameters.herdSize%2);
 	}
 	
 	public List<Krill> initHerd(Transform carPosition, Transform[] krillVis){
@@ -18,7 +20,6 @@ public class CircleKrillSetter : KrillSetter {
 		
 		
 		for(int i = 1; i <= parameters.herdSize; i++){
-			Debug.Log("Current Angle " + currentAngle);
 			Position position = calculateNewPosition(carPosition,currentAngle);
 			currentAngle += angle;
 			herd.Add(new Krill(position,krillVis[i]));
@@ -28,12 +29,12 @@ public class CircleKrillSetter : KrillSetter {
 	}
 	
 	public void placeKrills(List<Krill> herd, Transform carPosition){
-		float currentAngle = 0.0f;
+		float currentAngle = carPosition.rotation.eulerAngles.y - (parameters.herdSize - parameters.herdSize%2)/2.0f * angle; 
 		
 		foreach(Krill krill in herd){
 			Position position = calculateNewPosition(carPosition,currentAngle);
 			currentAngle += angle;
-			krill.updatePosition(carPosition.position,position);
+	//		krill.updatePosition(carPosition.position,position);
 		}
 	}
 	
@@ -42,8 +43,9 @@ public class CircleKrillSetter : KrillSetter {
 		faceRotation.y = currentAnglel;
 		Quaternion newRotation = new Quaternion();
 		newRotation.eulerAngles = faceRotation;
-		Vector3 newPosition = carPosition.position + height * (newRotation * Vector3.right);
+		Vector3 newPosition = carPosition.position + height * (newRotation * Vector3.forward);
 		
 		return new Position(newPosition);
 	}
+	
 }

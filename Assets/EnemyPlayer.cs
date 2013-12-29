@@ -44,11 +44,11 @@ public class EnemyPlayer : Player {
 		float dir = Vector3.Dot(perp, carTransform.up);
 		float angle = Vector3.Angle(heading,carTransform.forward);
 		if (dir > 0f) {
-			if(angle > 4.0f)
+			if(angle > 2.0f)
 				return 1;
 		}
 		else{
-			if(angle > 4.0f)
+			if(angle > 2.0f)
 				return -1;				
 		}
 		return 0;		
