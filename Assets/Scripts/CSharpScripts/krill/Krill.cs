@@ -19,10 +19,10 @@ public class Krill {
     public void updatePosition(Vector3 carPosition){
 		position = position + motionInduced + diffusionMotion;
 			
-		clampToCar(carPosition);
+		visualizeKrill(carPosition);
     }
 
-	private void clampToCar(Vector3 carPosition){
+	private void visualizeKrill(Vector3 carPosition){
 		krillVizualPosition.position = new Vector3(position.getX(),carPosition.y + 1.0f,position.getZ());
 	}
 
