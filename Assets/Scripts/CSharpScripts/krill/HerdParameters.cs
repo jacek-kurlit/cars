@@ -6,11 +6,13 @@ public class HerdParameters{
     public float Vf = 0.02f;
     public float inertiaWeight = 1.0f; // from range [0,1]
     public float inertiaForagingWeight = 0.9f; // from range [0,1]
+	//nie zmieniać!
     public int herdSize = 5;
 
 	private int currentIteration = 0;
 	private int maxIteration = 5;
 
+	private Krill bestKrill;
     private Position bestFitnessPosition;
     private float bestFitnessValue = 1000000.0f;
     private float worstFitnessValue = -100000.0f;
@@ -19,10 +21,13 @@ public class HerdParameters{
         return worstFitnessValue - bestFitnessValue;
     }
 
-    public Position getBestFitnessKrill() {
+    public Position getBestFitnessPosition() {
         return bestFitnessPosition;
     }
 
+	public Krill getBestFitnessKrill(){
+		return bestKrill;
+	}
 	public bool nextIteration(){
 		if(currentIteration <= maxIteration){
 			currentIteration++;
@@ -44,6 +49,7 @@ public class HerdParameters{
 
 
 		if(krill.getFitnessValue() < bestFitnessValue){
+			bestKrill = krill;
 			bestFitnessValue = krill.getFitnessValue();
 			bestFitnessPosition = krill.getPosition().getClone();
 		}

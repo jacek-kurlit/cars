@@ -17,8 +17,8 @@ public class HumanPlayer : Player {
 			return -1;
 		return 0;
 	}
-	
-	public void collision(Collision other){		
-		
+
+	public void resetPosition(){
+
 	}
 }

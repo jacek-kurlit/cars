@@ -4,15 +4,14 @@ using System.Collections.Generic;
 
 public class Food {	
     private Position[] positions;
-	private Position centerPosition;
-	private Position nextCenterPosition;
+	private Position firstPosition;
+	private Position secondPosition;
 	private Position currentFoodPosition;
 	private int currentIndex = 1;
+	
+	private float maxFoodCoefficient = 0.03f;
 
-	private float foodCarOffset = 10.0f;
-	private float maxFoodCoefficient = 0.05f;
-
-	private const float closeDistance = 10.0f;
+	private const float closeDistance = 20.0f;
 	private const float farDistance = 50.0f;
 
 	private TendencyCalculator tendencyCalculator = new TendencyCalculator();
@@ -20,9 +19,9 @@ public class Food {
 
 	private Transform visualFoodPosition;
 
-	public Food(Transform[] initialTrace, HerdParameters herdParameters){
+	public Food(Transform[] initialTrace, HerdParameters herdParameters, Transform visualFoodTransform){
 		positions = new Position[initialTrace.Length];		
-		visualFoodPosition = GameObject.FindGameObjectWithTag("Food").transform;
+		visualFoodPosition = visualFoodTransform;
 		this.herdParameters = herdParameters;
 
 		for(int i = 0; i < initialTrace.Length; i++){
@@ -45,43 +44,16 @@ public class Food {
 	}
 
 	private void initCenterPositions(){
-		centerPosition = calculateCenterPosition(1);
-		nextCenterPosition = calculateNextCenterPosition();
-		currentFoodPosition = centerPosition;
+		firstPosition = positions[1];
+		secondPosition = positions[2];
+		currentFoodPosition = firstPosition;
 	}		
-
-	private Position calculateCenterPosition(int startIndex){
-		Position closePosition = positions[startIndex];
-		Position farPosition = farFoodPosition(startIndex);
-		return (closePosition + farPosition)/2.0f;
-	}
-	
-	private Position farFoodPosition(int startIndex){
-		if(startIndex + 1 < positions.Length){
-			return positions[startIndex + 1];
-		}
-		return positions[1];
-	}
-
-	private Position calculateNextCenterPosition(){
-		int next = nextIndex(currentIndex);
-		Position nextCenterPosition = calculateCenterPosition(next);
-			
-		return nextCenterPosition;
-	}
-	private int  nextIndex(int index){
-		if(index + 1 < positions.Length){
-			return index + 1;
-		}else{
-			return 1;
-		}
-	}
 	
 	private Position calculateVirtualFoodPosition(Position carPosition){
-		float distance = carPosition.distanceFrom(centerPosition);
+		float distance = carPosition.distanceFrom(firstPosition);
 		
 		if(distance > farDistance){				
-			return centerPosition;
+			return firstPosition;
 		}else{
 			return calculateRelatedFoodPosition(carPosition);
 		}
@@ -89,7 +61,7 @@ public class Food {
 	
 	private Position calculateRelatedFoodPosition(Position carPosition){
 		Position relatedClosePosition =  tendencyCalculator.calculateRelatedPosition(currentFoodPosition,carPosition);
-		Position relatedFarPosition = tendencyCalculator.calculateRelatedPosition(nextCenterPosition,carPosition);
+		Position relatedFarPosition = tendencyCalculator.calculateRelatedPosition(secondPosition,currentFoodPosition);
 		
 		float closeFoodCoefficient = calculateCloseFoodCoefficient(carPosition);
 		float farFoodCoefficient = maxFoodCoefficient - closeFoodCoefficient;
@@ -99,29 +71,42 @@ public class Food {
 	}
 
 	private float calculateCloseFoodCoefficient(Position carPosition){
-		float distance = carPosition.distanceFrom(centerPosition);
+		float distance = carPosition.distanceFrom(firstPosition);
 		if(distance >= closeDistance && distance <= farDistance){
 			return ((distance - closeDistance)/(farDistance - closeDistance)) * maxFoodCoefficient;
 		}
 		changeFoodIndex();
-		return 1.0f;
+		return 0.01f;
 	}
 
 	private void changeFoodIndex(){
-		Debug.Log("Leaving point " + currentIndex + " next target at point " + (currentIndex + 1));
-		currentIndex = nextIndex(currentIndex);
+		if(currentIndex + 1 < positions.Length)
+			currentIndex++;
+		else
+			currentIndex = 1;
 		nextPoint();
 	}
-
+	
 	private void nextPoint(){
-		centerPosition = nextCenterPosition;
-		nextCenterPosition = calculateNextCenterPosition();
-		currentFoodPosition = centerPosition;
+		firstPosition = secondPosition;
+		secondPosition = farFoodPosition();
+		currentFoodPosition = firstPosition;
+	}
+
+	private Position farFoodPosition(){
+		if(currentIndex + 1 < positions.Length){
+			return positions[currentIndex + 1];
+		}
+		return positions[1];
 	}
 
 	private void visualizeFood(Vector3 carVector){
 		Vector3 newVisualFoodVector = new Vector3(currentFoodPosition.getX(),currentFoodPosition.getY() + 0.5f,currentFoodPosition.getZ());
 		visualFoodPosition.position = newVisualFoodVector;
+	}
+
+	public Vector3 getFirstFoodPosition(){
+		return positions[currentIndex].toVector3();
 	}
 			
 }

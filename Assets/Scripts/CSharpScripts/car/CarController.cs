@@ -20,7 +20,11 @@ public class CarController : MonoBehaviour {
 	// This factor lets you scale the tensor, in order to make the car more or less dynamic.
 	// A higher inertia makes the car change direction slower, which can make it easier to respond to.
 	public float inertiaFactor = 1.5f;
-	
+
+	public string carId;
+
+	public Transform visualFoodTransform;
+	public Transform[] krillVis;
 	// current input state
 	float brake;
 	float throttle;
@@ -57,8 +61,10 @@ public class CarController : MonoBehaviour {
 
 	// Turn traction control on or off
 	public bool tractionControl = true;
-	
-	
+
+	private bool crashFlag = false;
+	private float timer = 0.0f;
+	private float respTime = 3.0f;
 	// These values determine how fast steering value is changed when the steering keys are pressed or released.
 	// Getting these right is important to make the car controllable, as keyboard input does not allow analogue input.
 	
@@ -85,14 +91,14 @@ public class CarController : MonoBehaviour {
 			return val;
 		}
 	}
-
+	
 	// Initialize
 	void Start () 
 	{
 		if(isHuman)
 			player = new HumanPlayer();
 		else{
-			player = new EnemyPlayer(gameObject);
+			player = new EnemyPlayer(gameObject,visualFoodTransform,krillVis);
 		}
 		
 		if (centerOfMass != null)
@@ -114,6 +120,10 @@ public class CarController : MonoBehaviour {
 
 		// Apply inputs
 		applyPhysicToWheels();
+
+		if(crashFlag){
+			countDownCrash();
+		}
 	}
 	
 	private void adjustSteering(){
@@ -237,7 +247,25 @@ public class CarController : MonoBehaviour {
 		}
 	}
 	
-	public void OnCollisionStay(Collision other){
-		player.collision(other);
+	public void OnCollisionEnter(Collision other){
+		if(!(other.gameObject.tag == "Player"))
+			if(!crashFlag){
+				crashFlag = true;
+				timer = 0.0f;
+			}
+	}
+
+	public void OnCollisionExit(Collision other){
+		crashFlag = false;
+		timer = 0.0f;
+	}
+
+	private void countDownCrash(){
+		timer += Time.deltaTime;
+		if(timer >= respTime){
+			player.resetPosition();
+			crashFlag = false;
+			timer = 0.0f;
+		}
 	}
 }

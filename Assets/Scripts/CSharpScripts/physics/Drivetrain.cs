@@ -21,6 +21,7 @@ public class Drivetrain : MonoBehaviour {
 	public float minRPM = 0;
 	public float maxRPM = 2500;
 
+	public int carSpeed;
 	// engine's maximal torque (in Nm) and RPM.
 	public float maxTorque = 664;
 	public float torqueRPM = 4000;
@@ -61,8 +62,7 @@ public class Drivetrain : MonoBehaviour {
 	public float rpm;
 	public float slipRatio = 0.0f;
 	float engineAngularVelo;
-	
-	
+
 	float Sqr (float x) { return x*x; }
 	
 	// Calculate engine torque for current rpm and throttle values.
@@ -129,16 +129,11 @@ public class Drivetrain : MonoBehaviour {
 	
 	public int getSpeed(){
 		float km = poweredWheels[0].radius * poweredWheels[0].angularVelocity;
-		km = km * 3.6f;		
+		km = km * 3.6f;	
+		carSpeed = (int)km;
 		return (int)km;
 	}
-	
-	// Debug GUI. Disable when not needed.
-	void OnGUI () {
-		GUILayout.Label("Gear: "+(gear-1));
-		automatic = GUILayout.Toggle(automatic, "Automatic Transmission");
-	}
-	
+
 	private void applyTorqueToCarBody(float engineTorque, float engineFrictionTorque){
 		// Neutral gear - just rev up engine
 		float engineAngularAcceleration = (engineTorque-engineFrictionTorque) / engineInertia;

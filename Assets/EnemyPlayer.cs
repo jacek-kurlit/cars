@@ -13,32 +13,26 @@ public class EnemyPlayer : Player {
 	private bool newCollsion = true;
 	private float stopTime = 3.0f;
 	private float currentStopTime = 0.0f;
-	private float angle = 0f;
+
+	private Krill bestKrill;
 	
-	public EnemyPlayer(GameObject car){
+	public EnemyPlayer(GameObject car,Transform visualFoodTransofrm,Transform[] krillVis){
 	 	initialTrace =  GameObject.FindGameObjectWithTag("InitialTrace").GetComponentsInChildren<Transform>();
 		this.carTransform = car.transform;			
 		drivetrain = car.GetComponentInChildren<Drivetrain>();	
-		Transform[] krillVis =  GameObject.FindGameObjectWithTag("KrillVisual").GetComponentsInChildren<Transform>(); 
-		herd = new Herd(carTransform,krillVis,initialTrace);	
+		herd = new Herd(carTransform,krillVis,initialTrace,visualFoodTransofrm);	
 	}
 		
 	public int getVerticalInput(){		
-		Vector3 bestKrillPosition = herd.simulate();
-		return angleDirection(bestKrillPosition);
+		bestKrill = herd.simulate();
+		return angleDirection(bestKrill.getPosition().toVector3());
 	}
 	
 	public int getHorizontalInput(){
 		return handleBraking();
 	}
-	
-	public void collision(Collision other){
-		
-	}
 
 	private int angleDirection(Vector3 bestKrillPosition){
-		//Debug.Log("Heading to " + bestKrillPosition);
-		//wywalic ten if w srodku
 		Vector3 heading = bestKrillPosition - carTransform.position;
 		Vector3 perp = Vector3.Cross(carTransform.forward, heading);
 		float dir = Vector3.Dot(perp, carTransform.up);
@@ -54,35 +48,21 @@ public class EnemyPlayer : Player {
 		return 0;		
 	}
 
-	/*private int angleDirection(){
-		Vector3 heading = initialTrace[index].position - carTransform.position;
-		Vector3 perp = Vector3.Cross(carTransform.forward, heading);
-		float dir = Vector3.Dot(perp, carTransform.up);
-		float angle = Vector3.Angle(heading,carTransform.forward);
-		if (dir > 0f) {
-			if(angle > 5.0f)
-				return 1 * inverse;
-		}
-		else if (dir < -0.15f){
-			if(angle > 5.0f)
-				return -1 * inverse;				
-		}
-		return 0;		
-	}*/
-	
-	private int handleBraking(){
-		/*Vector3 heading = initialTrace[index].position - carTransform.position;
-		if(heading.magnitude < 10.0f){
-			index = index < initialTrace.Length-1? ++index:1;
-			Debug.Log("Change destination to " + index);			
-		}*/		
-		
-		if(drivetrain.getSpeed() < 100){
+	private int handleBraking(){		
+		if(drivetrain.getSpeed() < bestKrill.getHighSpeed()){
 			return 1;
-		}				
-		else{						
+		}else if(drivetrain.getSpeed() >=  bestKrill.getLowSpeed() && drivetrain.getSpeed() <= bestKrill.getHighSpeed()){
 			return 0;
-		}
-		
+		}									
+		return -1;				
+	}	
+
+	public void resetPosition(){
+		Vector3 foodVector = herd.getCurrentFoodPosition();
+		Quaternion rotation =  carTransform.rotation;
+		float yRotation = rotation.eulerAngles.y;
+		rotation.eulerAngles =  new Vector3(0.0f,yRotation,0.0f);
+		carTransform.rotation = rotation;
+		carTransform.position = foodVector;
 	}	
 }

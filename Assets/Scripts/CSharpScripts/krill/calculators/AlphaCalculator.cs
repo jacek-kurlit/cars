@@ -25,7 +25,7 @@ public class AlphaCalculator{
     }
 
     private Position calculateAlphaTarget(HerdParameters parameters, Krill krill) {
-        Position relatedPosition = tendencyCalculator.calculateRelatedPosition(parameters.getBestFitnessKrill(), krill.getPosition());
+        Position relatedPosition = tendencyCalculator.calculateRelatedPosition(parameters.getBestFitnessPosition(), krill.getPosition());
         float relatedFitness = tendencyCalculator.calculateRelatedFitness(krill.getFitnessValue(),parameters.getBestFitnessValue(), parameters);
 
        	relatedPosition = relatedPosition * relatedFitness;

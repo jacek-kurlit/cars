@@ -5,6 +5,6 @@ public interface Player{
 	 int getVerticalInput();
 	
 	 int getHorizontalInput();
-	
-	void collision(Collision other);
+
+		void resetPosition();
 }
