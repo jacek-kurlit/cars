@@ -37,7 +37,7 @@ public class CarController : MonoBehaviour {
 	Drivetrain drivetrain;
 	
 	//Who Controller the car
-	private Player player;
+	public Player player;
 	public bool isHuman;
 	// How long the car takes to shift gears
 	public float shiftSpeed = 0.8f;
@@ -248,7 +248,7 @@ public class CarController : MonoBehaviour {
 	}
 	
 	public void OnCollisionEnter(Collision other){
-		if(!(other.gameObject.tag == "Player"))
+		if(!(other.gameObject.tag == "Player") && !(other.gameObject.tag == "Enemy"))
 			if(!crashFlag){
 				crashFlag = true;
 				timer = 0.0f;

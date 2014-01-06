@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using System;
 
 public class Food {	
     private Position[] positions;
 	private Position firstPosition;
 	private Position secondPosition;
 	private Position currentFoodPosition;
-	private int currentIndex = 1;
+	private int currentIndex = 0;
 	
 	private float maxFoodCoefficient = 0.03f;
 
@@ -18,18 +18,37 @@ public class Food {
 	private HerdParameters herdParameters;
 
 	private Transform visualFoodPosition;
+	private SectorsManager sectorManager;
+	private PointsCointerner pointsCointainer;
 
-	public Food(Transform[] initialTrace, HerdParameters herdParameters, Transform visualFoodTransform){
-		positions = new Position[initialTrace.Length];		
+	public Food(HerdParameters herdParameters, Transform visualFoodTransform){
+		sectorManager =  GameObject.FindGameObjectWithTag("Sector").GetComponent<SectorsManager>();
+		pointsCointainer = sectorManager.getContainerClone();
+
+		List<Vector3> initialTrace = pointsCointainer.getAllMapPoints();
+
+		positions = new Position[initialTrace.Count];		
 		visualFoodPosition = visualFoodTransform;
 		this.herdParameters = herdParameters;
 
-		for(int i = 0; i < initialTrace.Length; i++){
-			positions[i] = new Position(initialTrace[i].position);
+		for(int i = 0; i < initialTrace.Count; i++){
+			positions[i] = new Position(initialTrace[i]);
 		}
 
 		initCenterPositions();
 	}	   
+
+	public void resetFoodPoints(){
+		List<Vector3> newPositions = pointsCointainer.getAllMapPoints();
+		try{		
+		for(int i = 0; i < newPositions.Count; i++){
+			positions[i] = new Position(newPositions[i]);
+		}
+		}catch(IndexOutOfRangeException e){
+			Debug.Log("wtf");
+		}
+		currentIndex = 0;
+	}
 
 	public void updateFoodPosition(Vector3 carPosVecotr){
 		Position carPosition = new Position(carPosVecotr);
@@ -44,8 +63,8 @@ public class Food {
 	}
 
 	private void initCenterPositions(){
-		firstPosition = positions[1];
-		secondPosition = positions[2];
+		firstPosition = positions[0];
+		secondPosition = positions[1];
 		currentFoodPosition = firstPosition;
 	}		
 	
@@ -83,7 +102,7 @@ public class Food {
 		if(currentIndex + 1 < positions.Length)
 			currentIndex++;
 		else
-			currentIndex = 1;
+			currentIndex = 0;
 		nextPoint();
 	}
 	
@@ -97,7 +116,7 @@ public class Food {
 		if(currentIndex + 1 < positions.Length){
 			return positions[currentIndex + 1];
 		}
-		return positions[1];
+		return positions[0];
 	}
 
 	private void visualizeFood(Vector3 carVector){
@@ -105,8 +124,22 @@ public class Food {
 		visualFoodPosition.position = newVisualFoodVector;
 	}
 
-	public Vector3 getFirstFoodPosition(){
-		return positions[currentIndex].toVector3();
+	public Vector3 getPreviousFoodPosition(){
+		if(currentIndex - 1 >= 0)
+			return positions[currentIndex -1].toVector3();
+		return positions[positions.Length - 1].toVector3();
 	}
-			
+
+	public List<Vector3> getSectorVectors(int sectorID){
+		return pointsCointainer.getSectorVectors(sectorID);
+	}
+
+	public void setSectorVectors(List<Vector3> vectors,int sectorId){
+		pointsCointainer.setSectorVectors(vectors,sectorId);
+	}
+
+	public List<Vector3> getAllMapPoints(){
+		resetFoodPoints();
+		return pointsCointainer.getAllMapPoints();
+	}
 }

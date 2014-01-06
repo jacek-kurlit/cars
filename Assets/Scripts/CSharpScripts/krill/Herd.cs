@@ -15,11 +15,11 @@ public class Herd {
 	private Transform carTransform;
 	private Transform[] krillViz;
 
-	public Herd(Transform carTransform,Transform[] krillViz, Transform[] initialTrace,Transform visualFoodTransform){
+	public Herd(Transform carTransform,Transform[] krillViz,Transform visualFoodTransform){
 		this.carTransform = carTransform;
 		this.krillViz = krillViz;	
 		krillSetter = new CircleKrillSetter(new HerdParameters());
-		food = new Food(initialTrace,algorithmParameters,visualFoodTransform);
+		food = new Food(algorithmParameters,visualFoodTransform);
 	}
 
     public Krill simulate(){ 	        
@@ -62,6 +62,22 @@ public class Herd {
     }
 
 	public Vector3 getCurrentFoodPosition(){
-		return food.getFirstFoodPosition();
+		return food.getPreviousFoodPosition();
+	}
+
+	public void resetFoodPoints(){
+		food.resetFoodPoints();
+	}
+
+	public List<Vector3> getSectorVectors(int sectorId){
+		return food.getSectorVectors(sectorId);
+	}
+
+	public void setSectorVectors(List<Vector3> vectors,int sectorId){
+		food.setSectorVectors(vectors,sectorId);
+	}
+
+	public List<Vector3> getAllMapPoints(){
+		return food.getAllMapPoints();
 	}
 }

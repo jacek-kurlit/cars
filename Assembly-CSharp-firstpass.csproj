@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,42 +66,66 @@
      <Compile Include="Assets\Pro Standard Assets\Water\Sources\Water.cs" />
      <None Include="Assets\Pro Standard Assets\Glass Refraction\Glass-Stained-BumpDistort.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\KrillData\lap102\wayPoints4.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample.shader" />
      <None Include="Assets\Shaders\PolyTerrain\FirstPassLightmap.shader" />
+     <None Include="Assets\KrillData\lap102\wayPoints2.txt" />
      <None Include="Assets\Shaders\LightMappedDiffusetDetail.shader" />
      <None Include="Assets\Shaders\LightsEmmissive.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\ColorCorrectionEffect.shader" />
      <None Include="Assets\Shaders\ShadowProjection.shader" />
+     <None Include="Assets\KrillData\wayPoints1.txt" />
      <None Include="Assets\~AlternatePhysicsModel\Source Assets\Cars\Car.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\MotionBlur.shader" />
      <None Include="Assets\Shaders\GlassReflect.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\KrillData\106\wayPoints3.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\ColorCorrectionEffect_26.shader" />
+     <None Include="Assets\KrillData\init\wayPoints1.txt" />
+     <None Include="Assets\KrillData\rekords.txt" />
+     <None Include="Assets\KrillData\106\wayPoints5.txt" />
+     <None Include="Assets\KrillData\lap102\wayPoints3.txt" />
      <None Include="Assets\~AlternatePhysicsModel\Source Assets\Skidmarks\Skidmarks.shader" />
      <None Include="Assets\Pro Standard Assets\Glass Refraction\Glass-Stained-BumpSpecDistort.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample_26.shader" />
+     <None Include="Assets\KrillData\106\wayPoints1.txt" />
      <None Include="Assets\Shaders\Normal-BumpSpec_EnvLightmapped.shader" />
-     <None Include="Assets\KrillData\rekords.txt" />
+     <None Include="Assets\KrillData\init\wayPoints5.txt" />
+     <None Include="Assets\KrillData\lap102\wayPoints1.txt" />
+     <None Include="Assets\KrillData\106\rekords.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\SSAOShader.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\KrillData\lap102\wayPoints5.txt" />
      <None Include="Assets\Shaders\AlphaTest-Diffuse-GEqual.shader" />
+     <None Include="Assets\KrillData\wayPoints5.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Luminance.shader" />
+     <None Include="Assets\KrillData\wayPoints.txt" />
      <None Include="Assets\Shaders\Skidmarks.shader" />
+     <None Include="Assets\KrillData\init\wayPoints.txt" />
      <None Include="Assets\Shaders\Glassreflect2D.shader" />
+     <None Include="Assets\KrillData\106\wayPoints2.txt" />
      <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water.shader" />
+     <None Include="Assets\KrillData\wayPoints3.txt" />
+     <None Include="Assets\KrillData\106\wayPoints4.txt" />
      <None Include="Assets\Shaders\GlassBuilding.shader" />
+     <None Include="Assets\KrillData\init\wayPoints4.txt" />
      <None Include="Assets\Shaders\PolyTerrain\polysplatting.cginc" />
+     <None Include="Assets\KrillData\init\rekords.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\GrayscaleEffect.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\SepiaToneEffect.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\TwirlEffect.shader" />
      <None Include="Assets\Pro Standard Assets\Image Based\VortexEffect.shader" />
+     <None Include="Assets\KrillData\wayPoints4.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Shaders\Alpha-VertexLitGlow02.shader" />
+     <None Include="Assets\KrillData\wayPoints2.txt" />
+     <None Include="Assets\KrillData\init\wayPoints3.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\EdgeDetectX.shader" />
      <None Include="Assets\Shaders\MirrorReflectionLit.shader" />
      <None Include="Assets\Textures\VFX\ShadowProjection.shader" />
      <None Include="Assets\Shaders\TransparentLightMappedVertexLiZWrite.shader" />
+     <None Include="Assets\KrillData\init\wayPoints2.txt" />
      <None Include="Assets\Shaders\Alpha-Diffuse-ZWrite.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
