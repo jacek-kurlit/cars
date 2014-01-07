@@ -9,6 +9,7 @@ public class PointsAnalizer : MonoBehaviour {
 	private List<Vector3> allMapPoints;
 	private int currentIndex;
 
+	public int lap = 1;
 	private float randomOffset = 4.0f;
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,6 @@ public class PointsAnalizer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 heading = allMapPoints[currentIndex] - carTransform.position;
-		Vector3 perp = Vector3.Cross(carTransform.forward, heading);
 		float angle = Vector3.Angle(heading,carTransform.forward);
 
 		if(angle >= 90.0f){

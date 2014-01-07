@@ -20,10 +20,10 @@ public class SectorsManager : MonoBehaviour {
 		return pointsCointerner.getBestSectorTime(sectorId);
 	}
 
-	public void saveNewSectorVectors(int sectorId,float newSectorTime,List<Vector3> points){
+	public void saveNewSectorVectors(int sectorId,float newSectorTime,List<Vector3> points, int lap){
 		pointsCointerner.replaceSectorPoints(sectorId,newSectorTime,points);
 		FileManager.saveNewSectorPoints(sectorId,newSectorTime,points);
-		FileManager.saveNewSectorTime(sectorId,"Nowy rekord sektoru " + newSectorTime);
+		FileManager.saveNewSectorTime(sectorId,"Nowy rekord sektoru " + newSectorTime + " dla okrązenia " + lap);
 	}
 
 	public List<Vector3> getAllMapPoints(){

@@ -5,9 +5,9 @@ using System.IO;
 
 public class FileManager {
 
-	public static void saveNewRekord(float time){
+	public static void saveNewRekord(float time,int lap){
 		StreamWriter sw = new StreamWriter (Application.dataPath + "/KrillData/rekords.txt", true);
-		sw.WriteLine ("Nowy rekord toru wynosi: " + time);
+		sw.WriteLine ("Nowy rekord toru wynosi: " + time + " dla okrążenia " + lap);
 		sw.Close ();
 
 		sw = new StreamWriter (Application.dataPath + "/KrillData/rekord.txt", false);

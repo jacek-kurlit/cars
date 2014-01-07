@@ -30,7 +30,7 @@ public class LapDetector : MonoBehaviour {
 
 			player.setGeneralChange(true);
 			List<Vector3> points = replaceVectors(gameObject);
-			sectorManger.saveNewSectorVectors(id,bestSectorTime,points);
+			sectorManger.saveNewSectorVectors(id,bestSectorTime,points,pointsAnalizer.lap);
 		}else{
 			if(player.isNewTrace(id)){
 				player.setSectorVectors(sectorManger.getSectorVectors(id),id);

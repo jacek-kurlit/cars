@@ -31,8 +31,9 @@ public class StartLineDetector : MonoBehaviour {
 
 	private void newLapRecord(Timer timer, GameObject gameObject){
 		if(timer.totalTime < bestLapTime && timer.enabled){
+			PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 			bestLapTime = timer.totalTime;
-			FileManager.saveNewRekord(bestLapTime);
+			FileManager.saveNewRekord(bestLapTime,pointsAnalizer.lap);
 		}
 		resetPoints(gameObject);
 	}
@@ -46,7 +47,7 @@ public class StartLineDetector : MonoBehaviour {
 
 			player.setGeneralChange(true);
 			List<Vector3> points = replaceVectors(gameObject);
-			sectorManger.saveNewSectorVectors(id,bestSectorTime,points);
+			sectorManger.saveNewSectorVectors(id,bestSectorTime,points,pointsAnalizer.lap);
 		}else{		
 			if(player.isNewTrace(id)){
 				player.setSectorVectors(sectorManger.getSectorVectors(id),id);
@@ -74,6 +75,7 @@ public class StartLineDetector : MonoBehaviour {
 
 	private void resetPoints(GameObject gameObject){
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
+		pointsAnalizer.lap = pointsAnalizer.lap + 1;
 		Player player =  gameObject.GetComponent<CarController>().player;
 		pointsAnalizer.setAllMapPoints(player.getAllMapPoints());
 		player.setGeneralChange(false);
