@@ -7,7 +7,7 @@ public class CircleKrillSetter : KrillSetter {
 
 	private float angle;
 	private float height = 5.0f;
-	private const float triangleAngleSize = 60.0f;
+	private const float triangleAngleSize = 90.0f;
 	private float delta;
 	private float triangleArm;
 	private int partSize;
@@ -16,9 +16,9 @@ public class CircleKrillSetter : KrillSetter {
 
 	public CircleKrillSetter(HerdParameters parameters){
 		this.parameters = parameters;
-		speeds = new float[5,2]{ {100.0f,120.0f} , {120.0f,160.0f}, {170.0f,200.0f},{120.0f,160.0f},{100.0f,120.0f}};
+		//speeds = new float[5,2]{ {100.0f,120.0f} , {120.0f,160.0f}, {170.0f,200.0f},{120.0f,160.0f},{100.0f,120.0f}};
 		//speeds = new float[3,2]{{120.0f,160.0f}, {170.0f,200.0f},{120.0f,160.0f}};
-		//speeds = new float[7,2]{ {80.0f,100.0f} , {100.0f,120.0f}, {120.0f,160.0f},{160.0f,200.0f},{120.0f,160.0f},{100.0f,120.0f},{80.0f,100.0f}};
+		speeds = new float[7,2]{ {80.0f,100.0f} , {100.0f,120.0f}, {120.0f,160.0f},{160.0f,200.0f},{120.0f,160.0f},{100.0f,120.0f},{80.0f,100.0f}};
 		partSize = (parameters.herdSize - parameters.herdSize%2)/2;
 		angle = triangleAngleSize/(parameters.herdSize - parameters.herdSize%2);
 		triangleArm = 2.0f * height * Mathf.Sqrt(3.0f)/3.0f;

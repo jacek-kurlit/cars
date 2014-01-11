@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs">
     <Files>
       <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\CircleKrillSetter.cs" Line="14" Column="23" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" Line="13" Column="31" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CSharpScripts\krill\utils\Position.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="15" Column="36" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\utils\CircleKrillSetter.cs" Line="19" Column="5" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\HerdParameters.cs" Line="13" Column="30" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Herd.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CSharpScripts\krill\Food.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CSharpScripts\ai\LapDetector.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CSharpScripts\ai\Player.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CSharpScripts\ai\EnemyPlayer.cs" Line="1" Column="1" />

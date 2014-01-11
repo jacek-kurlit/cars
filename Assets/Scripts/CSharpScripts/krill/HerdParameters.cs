@@ -7,10 +7,10 @@ public class HerdParameters{
     public float inertiaWeight = 1.0f; // from range [0,1]
     public float inertiaForagingWeight = 0.9f; // from range [0,1]
 	//nie zmieniać!
-    public int herdSize = 5;
+    public int herdSize = 7;
 
 	private int currentIteration = 0;
-	private int maxIteration = 10;
+	private int maxIteration = 15;
 
 	private Krill bestKrill;
     private Position bestFitnessPosition;

@@ -101,6 +101,8 @@
      <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample.shader" />
      <None Include="Assets\KrillData\wayPoints1.txt" />
      <None Include="Assets\Shaders\PolyTerrain\FirstPassLightmap.shader" />
+     <None Include="Assets\KrillData\test6\Enemy 2.txt" />
+     <None Include="Assets\KrillData\test6\Enemy 3.txt" />
      <None Include="Assets\KrillData\lap102\wayPoints2.txt" />
      <None Include="Assets\KrillData\test2\Enemy 3.txt" />
      <None Include="Assets\Shaders\LightMappedDiffusetDetail.shader" />
@@ -130,7 +132,6 @@
      <None Include="Assets\KrillData\test4\wayPoints2.txt" />
      <None Include="Assets\KrillData\test2\Enemy 1.txt" />
      <None Include="Assets\Pro Standard Assets\Glass Refraction\Glass-Stained-BumpSpecDistort.shader" />
-     <None Include="Assets\KrillData\test1\Enemy 2.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\GlowEffectDownsample_26.shader" />
      <None Include="Assets\KrillData\test3\Enemy 1.txt" />
      <None Include="Assets\KrillData\test2\rekords.txt" />
@@ -138,20 +139,22 @@
      <None Include="Assets\KrillData\test4\wayPoints5.txt" />
      <None Include="Assets\KrillData\test3\Enemy 3.txt" />
      <None Include="Assets\KrillData\init\wayPoints5.txt" />
+     <None Include="Assets\KrillData\test6\Enemy 1.txt" />
      <None Include="Assets\KrillData\lap102\wayPoints1.txt" />
      <None Include="Assets\KrillData\test1\rekords.txt" />
      <None Include="Assets\KrillData\test4\Enemy 2.txt" />
      <None Include="Assets\KrillData\rekords.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\SSAOShader.shader" />
-     <None Include="Assets\KrillData\Enemy 2.txt" />
+     <None Include="Assets\KrillData\test1\Enemy 2.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\KrillData\test2\description.txt" />
      <None Include="Assets\KrillData\lap102\wayPoints5.txt" />
      <None Include="Assets\KrillData\test5\Enemy 1.txt" />
      <None Include="Assets\KrillData\test5\rekords.txt" />
      <None Include="Assets\Shaders\AlphaTest-Diffuse-GEqual.shader" />
-     <None Include="Assets\KrillData\Enemy 1.txt" />
+     <None Include="Assets\KrillData\test1\Enemy 1.txt" />
      <None Include="Assets\KrillData\test5\desription.txt" />
+     <None Include="Assets\KrillData\Enemy 1.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\KrillData\test1\Enemy 3.txt" />
      <None Include="Assets\Shaders\Skidmarks.shader" />
@@ -159,6 +162,7 @@
      <None Include="Assets\KrillData\test3\rekords.txt" />
      <None Include="Assets\Shaders\Glassreflect2D.shader" />
      <None Include="Assets\KrillData\test6\description.txt" />
+     <None Include="Assets\KrillData\Enemy 2.txt" />
      <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water.shader" />
      <None Include="Assets\Shaders\GlassBuilding.shader" />
      <None Include="Assets\KrillData\init\wayPoints4.txt" />
@@ -180,7 +184,6 @@
      <None Include="Assets\KrillData\Enemy 3.txt" />
      <None Include="Assets\KrillData\test2\Enemy 2.txt" />
      <None Include="Assets\Pro Standard Assets\Image Based\EdgeDetectX.shader" />
-     <None Include="Assets\KrillData\test1\Enemy 1.txt" />
      <None Include="Assets\Shaders\MirrorReflectionLit.shader" />
      <None Include="Assets\Textures\VFX\ShadowProjection.shader" />
      <None Include="Assets\Shaders\TransparentLightMappedVertexLiZWrite.shader" />

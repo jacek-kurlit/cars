@@ -1,7 +1,5 @@
-Nowy rekord toru wynosi: 114.3115 dla okrążenia 1
-Nowy rekord toru wynosi: 114.2452 dla okrążenia 1
-Nowy rekord toru wynosi: 109.7152 dla okrążenia 2
-Nowy rekord toru wynosi: 109.1355 dla okrążenia 2
-Nowy rekord toru wynosi: 108.6716 dla okrążenia 4
-Nowy rekord toru wynosi: 107.3777 dla okrążenia 7
-Nowy rekord toru wynosi: 106.6747 dla okrążenia 10
+Nowy rekord toru wynosi: 107.6915 dla okrążenia 1
+Nowy rekord toru wynosi: 107.3105 dla okrążenia 1
+Nowy rekord toru wynosi: 106.3302 dla okrążenia 2
+Nowy rekord toru wynosi: 104.381 dla okrążenia 4
+Nowy rekord toru wynosi: 103.8059 dla okrążenia 26
