@@ -30,19 +30,20 @@ public class StartLineDetector : MonoBehaviour {
 	}
 
 	private void newLapRecord(Timer timer, GameObject gameObject){
+		Player player =  gameObject.GetComponent<CarController>().player;
 		if(timer.totalTime < bestLapTime && timer.enabled){
 			PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 			bestLapTime = timer.totalTime;
 			FileManager.saveNewRekord(bestLapTime,pointsAnalizer.lap);
 		}
+		saveLap(gameObject,timer);
 		resetPoints(gameObject);
 	}
 
-	private void newSectorRecord(Timer timer,GameObject gameObject){
+	protected void newSectorRecord(Timer timer,GameObject gameObject){
 		Player player =  gameObject.GetComponent<CarController>().player;
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 		if(timer.sectorTime < bestSectorTime){
-			Debug.Log("Nowy rekord sektora " + id);
 			bestSectorTime = timer.sectorTime;
 
 			player.setGeneralChange(true);
@@ -63,7 +64,7 @@ public class StartLineDetector : MonoBehaviour {
 		}
 	}
 	
-	private List<Vector3> replaceVectors(GameObject gameObject){
+	protected List<Vector3> replaceVectors(GameObject gameObject){
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 		Player player =  gameObject.GetComponent<CarController>().player;
 		List<Vector3> points = player.getSectorVectors(id); 
@@ -73,12 +74,20 @@ public class StartLineDetector : MonoBehaviour {
 		return points;
 	}
 
-	private void resetPoints(GameObject gameObject){
+	protected void resetPoints(GameObject gameObject){
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
-		pointsAnalizer.lap = pointsAnalizer.lap + 1;
 		Player player =  gameObject.GetComponent<CarController>().player;
 		pointsAnalizer.setAllMapPoints(player.getAllMapPoints());
 		player.setGeneralChange(false);
 
+	}
+
+	protected void saveLap(GameObject gameObject,Timer timer){
+		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
+		CarController carController = gameObject.GetComponent<CarController>();
+		Player player =  gameObject.GetComponent<CarController>().player;
+		
+		FileManager.saveLap(carController.carId,pointsAnalizer.lap,timer.totalTime);
+		pointsAnalizer.lap = pointsAnalizer.lap + 1;
 	}
 }

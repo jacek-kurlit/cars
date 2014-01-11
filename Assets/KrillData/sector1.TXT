@@ -1,7 +1,3 @@
-Nowy rekord sektoru 26.24171 dla okrązenia 1
-Nowy rekord sektoru 21.77784 dla okrązenia 2
-Nowy rekord sektoru 21.08198 dla okrązenia 2
-Nowy rekord sektoru 20.70914 dla okrązenia 3
-Nowy rekord sektoru 20.64285 dla okrązenia 3
-Nowy rekord sektoru 19.78081 dla okrązenia 4
-Nowy rekord sektoru 19.64805 dla okrązenia 5
+Nowy rekord sektoru 20.68524 dla okrązenia 1
+Nowy rekord sektoru 19.47362 dla okrązenia 3
+Nowy rekord sektoru 19.25046 dla okrązenia 8

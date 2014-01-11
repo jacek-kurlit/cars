@@ -60,4 +60,10 @@ public class FileManager {
 
 		return bestTime;
 	}
+
+	public static void saveLap(string carId,int lap, float time){
+		StreamWriter sw = new StreamWriter (Application.dataPath + "/KrillData/" + carId + ".txt", true);
+		sw.WriteLine(lap + "," + time);
+		sw.Close();
+	}
 }

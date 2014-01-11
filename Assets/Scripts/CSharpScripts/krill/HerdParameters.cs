@@ -10,7 +10,7 @@ public class HerdParameters{
     public int herdSize = 5;
 
 	private int currentIteration = 0;
-	private int maxIteration = 5;
+	private int maxIteration = 10;
 
 	private Krill bestKrill;
     private Position bestFitnessPosition;

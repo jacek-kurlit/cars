@@ -1,0 +1,5 @@
+herd size 5
+iterations 10
+triangle size 60
+far distance 70
+close distance 20

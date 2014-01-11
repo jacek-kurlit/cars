@@ -21,11 +21,10 @@ public class LapDetector : MonoBehaviour {
 		timer.sectorTime = 0.0f;
 	}
 
-	private void newSectorRecord(Timer timer,GameObject gameObject){
+	protected void newSectorRecord(Timer timer,GameObject gameObject){
 		Player player =  gameObject.GetComponent<CarController>().player;
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 		if(timer.sectorTime < bestSectorTime){
-			Debug.Log("Nowy rekord sektora " + id);
 			bestSectorTime = timer.sectorTime;
 
 			player.setGeneralChange(true);
@@ -47,7 +46,7 @@ public class LapDetector : MonoBehaviour {
 
 	}
 
-	private List<Vector3> replaceVectors(GameObject gameObject){
+	protected List<Vector3> replaceVectors(GameObject gameObject){
 		PointsAnalizer pointsAnalizer = gameObject.GetComponent<PointsAnalizer>();
 		Player player =  gameObject.GetComponent<CarController>().player;
 		
@@ -57,5 +56,4 @@ public class LapDetector : MonoBehaviour {
 
 		return points;
 	}
-
 }

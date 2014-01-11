@@ -12,7 +12,7 @@ public class Food {
 	private float maxFoodCoefficient = 0.03f;
 
 	private const float closeDistance = 20.0f;
-	private const float farDistance = 50.0f;
+	private const float farDistance = 70.0f;
 
 	private TendencyCalculator tendencyCalculator = new TendencyCalculator();
 	private HerdParameters herdParameters;
