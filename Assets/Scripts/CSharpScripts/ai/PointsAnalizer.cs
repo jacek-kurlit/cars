@@ -10,7 +10,7 @@ public class PointsAnalizer : MonoBehaviour {
 	private int currentIndex;
 
 	public int lap = 1;
-	private float randomOffset = 4.0f;
+	private float randomOffset = 0.1f;
 	// Use this for initialization
 	void Start () {
 		sectorManager =  GameObject.FindGameObjectWithTag("Sector").GetComponent<SectorsManager>();

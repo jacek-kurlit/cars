@@ -25,8 +25,8 @@ public class Krill {
 		this.maxSpeed = maxSpeed;
     }
 
-    public void updatePosition(Vector3 carPosition){
-		position = position + motionInduced + diffusionMotion;
+    public void updatePosition(Vector3 carPosition, HerdParameters parameters){
+		position = position + (motionInduced + diffusionMotion) * parameters.delta_t;
 			
 		visualizeKrill(carPosition);
     }

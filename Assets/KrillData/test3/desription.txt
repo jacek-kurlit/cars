@@ -1,3 +1,0 @@
-herd size 3
-iterations 15
-triangle size 60

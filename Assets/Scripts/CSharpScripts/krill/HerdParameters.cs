@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class HerdParameters{
- 	public float N_MAX = 0.01f;
+public class HerdParameters{ 
     public float Vf = 0.02f;
-    public float inertiaWeight = 1.0f; // from range [0,1]
+
+	public float N_MAX = 0.01f;
+	public float delta_t = 1.5f;
+    public float inertiaWeight = 0.6f; // from range [0,1]
     public float inertiaForagingWeight = 0.9f; // from range [0,1]
 	//nie zmieniać!
-    public int herdSize = 7;
+    public int herdSize = 5;
 
 	private int currentIteration = 0;
-	private int maxIteration = 15;
+	private int maxIteration = 10;
 
 	private Krill bestKrill;
     private Position bestFitnessPosition;

@@ -56,7 +56,7 @@ public class Herd {
 
     private void updateKrillPositions(){
 		foreach(Krill krill in herd){
-			krill.updatePosition(carTransform.position);
+			krill.updatePosition(carTransform.position, algorithmParameters);
 		}
 		food.updateFoodPosition(carTransform.position);	
     }
